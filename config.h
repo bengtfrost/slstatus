@@ -70,7 +70,7 @@ static const struct arg args[] = {
   { ram_perc, "RAM  %s%% | ", NULL },
   // { disk_perc,"HDD  %s%% | ", "/" },
   // { ipv4, "NET  %s | ", "wlan0" },
-  { wifi_perc, "NET  %s%% | ", "wlp2s0" },
+  { wifi_perc, "NET  %s%% | ", "wlan0" },
   // { run_command, "VOL  %s | ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1 " },
   /* From commandline: pactl list sinks | awk '$1=="Volume:" {print $5}' */
   { run_command, "VOL  %s | ", "pactl list sinks | awk '$1==\"Volume:\" {print $5}'" },
