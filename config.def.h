@@ -74,7 +74,7 @@ static const struct arg args[] = {
   // { run_command, "VOL  %s | ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1 " },
   /* From commandline: pactl list sinks | awk '$1=="Volume:" {print $5}' */
   { run_command, "VOL 󰕾 %s | ", "pactl list sinks | awk '$1==\"Volume:\" {print $5}'" },
-  { battery_perc,"BAT  %s%% | ", "BAT1"},
+  { battery_perc,"BAT   %s%% | ", "BAT1"},
   // { datetime, " %s ", "%Y-%m-%d  %T" },
   // { datetime, " %s ", "%Y-%m-%d  %H:%M" },
   { datetime, "%s ", "󱑎 %H:%M" },
