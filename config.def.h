@@ -37,8 +37,8 @@ static const char unknown_str[] = "n/a";
  * keymap              layout (variant) of current     NULL
  *                     keymap
  * load_avg            load average                    NULL
- * netspeed_rx         receive network speed           interface name (wlan0)
- * netspeed_tx         transfer network speed          interface name (wlan0)
+ * netspeed_rx         receive network speed           interface name (wlp2s0)
+ * netspeed_tx         transfer network speed          interface name (wlp2s0)
  * num_files           number of files in a directory  path
  *                                                     (/home/foo/Inbox/cur)
  * ram_free            free memory in GB               NULL
@@ -60,8 +60,8 @@ static const char unknown_str[] = "n/a";
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
  *                                                     NULL on OpenBSD/FreeBSD
- * wifi_essid          WiFi ESSID                      interface name (wlan0)
- * wifi_perc           WiFi signal in percent          interface name (wlan0)
+ * wifi_essid          WiFi ESSID                      interface name (wlp2s0)
+ * wifi_perc           WiFi signal in percent          interface name (wlp2s0)
  */
 static const struct arg args[] = {
   /* function format          argument */
@@ -69,8 +69,8 @@ static const struct arg args[] = {
   { cpu_perc, " CPU ▣ %s%% | ", NULL },
   { ram_perc, "RAM  %s%% | ", NULL },
   // { disk_perc,"HDD  %s%% | ", "/" },
-  // { ipv4, "NET  %s | ", "wlan0" },
-  { wifi_perc, "NET 󰒢 %s%% | ", "wlan0" },
+  // { ipv4, "NET  %s | ", "wlp2s0" },
+  { wifi_perc, "NET 󰒢 %s%% | ", "wlp2s0" },
   // { run_command, "VOL  %s | ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1 " },
   /* From commandline: pactl list sinks | awk '$1=="Volume:" {print $5}' */
   { run_command, "VOL 󰕾 %s | ", "pactl list sinks | awk '$1==\"Volume:\" {print $5}'" },
