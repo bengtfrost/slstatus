@@ -83,11 +83,10 @@ static const struct arg args[] = {
     // { print $2 }' | head -n1 " },
     /* From commandline: pactl list sinks | awk '$1=="Volume:" {print $5}' */
     {run_command,
-     "VOL  %s | ",
-     "wpctl get-volume @DEFAULT_AUDIO_SINK@ | "
-     "awk '{printf \"%.0f%%%s\", "
-     "$2*100, "
-     "($3==\"[MUTED]\" ? \" (muted)\" : \"\")}'"
+        "VOL  %s | ",
+        "pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && "
+         "echo \"$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | head -n 1) (muted)\" || "
+         "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | head -n 1"
     },
     {battery_perc, "BAT  %s%% | ", "BAT0"},
     // { datetime, " %s ", "%Y-%m-%d  %T" },
