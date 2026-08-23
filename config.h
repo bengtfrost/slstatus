@@ -79,14 +79,16 @@ static const struct arg args[] = {
     // { netspeed_rx, "NET 󰒢 ↓ %s| ", "wlp0s20f3" },
     // {wifi_essid, "WiFi  %s | ", "wlp0s20f3"},
     {wifi_perc, "NET 󰒢 %s%% | ", "wlp0s20f3"},
-    // { run_command, "VOL  %s | ", "amixer sget Master | awk -F\"[][]\" '/%/
-    // { print $2 }' | head -n1 " },
     /* From commandline: pactl list sinks | awk '$1=="Volume:" {print $5}' */
+    // {run_command, "VOL  %s | ",
+    //  "pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && "
+    //  "echo \"$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | "
+    //  "head -n 1) (muted)\" || "
+    //  "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | head -n
+    //  1"},
     {run_command, "VOL  %s | ",
-     "pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && "
-     "echo \"$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | "
-     "head -n 1) (muted)\" || "
-     "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+%' | head -n 1"},
+     "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{if ($3==\"[MUTED]\") print "
+     "\"muted\"; else print int($2*100)\"%\"}'"},
     {battery_perc, "BAT  %s%% | ", "BAT0"},
     // { datetime, " %s ", "%Y-%m-%d  %T" },
     // { datetime, " %s ", "%Y-%m-%d  %H:%M" },
